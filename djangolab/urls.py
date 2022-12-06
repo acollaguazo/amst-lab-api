@@ -20,16 +20,16 @@ from apirest import views
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
-    TokenVerifyView,
 )
+from rest_framework_simplejwt.views import TokenVerifyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/sensores$', views.sensor_data_list),
     re_path(r'^api/sensores/(?P<pk>[0-9]+)$',
                          views.sensor_data_detail),
-    re_path(r'^db/nuevo-jwt', TokenObtainPairView.as_view()),    
-    re_path(r'^auth-jwt-refresh/', TokenRefreshView.as_view()),
-    re_path(r'^auth-jwt-verify/', TokenVerifyView.as_view()),
+    path(r'^db/nuevo-jwt', TokenObtainPairView.as_view(),name='token_obtain_pair'),    
+    path(r'^auth-jwt-refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path(r'^auth-jwt-verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 ]

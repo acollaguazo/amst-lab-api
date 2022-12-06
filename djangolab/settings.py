@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apirest.apps.ApirestConfig',
-    'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'whitenoise.runserver_nostatic'
 ]
