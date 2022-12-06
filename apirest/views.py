@@ -2,7 +2,7 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 from apirest.models import Sensores
-from apirest.serializers import SensoresSerializer
+from apirest.serializer import SensoresSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
  
