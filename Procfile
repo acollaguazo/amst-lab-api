@@ -1,0 +1,1 @@
+web: gunicorn djangolab.wsgi:application --log-file –
