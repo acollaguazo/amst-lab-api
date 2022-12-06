@@ -48,7 +48,7 @@ def sensor_data_detail(request, pk):
                 {'message': 'sensor data was deleted successfully!'}, 
                     status=status.HTTP_204_NO_CONTENT)
     except Sensores.DoesNotExist: 
-    return JsonResponse(
+      return JsonResponse(
              {'message': 'The sensor data does not exist'}, 
                status=status.HTTP_404_NOT_FOUND)
     
