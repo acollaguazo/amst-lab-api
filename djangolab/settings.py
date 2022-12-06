@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ef&hf#%gcn4(ysfo+6s1c(jiv0q(scmyr#(!dk0apd*@u2r)bj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['rocky-sierra-89011.herokuapp.com']
+ALLOWED_HOSTS = ['amst-lab-api.herokuapp.com']
 
 REST_FRAMEWORK = {
 'DEFAULT_AUTHENTICATION_CLASSES': [
