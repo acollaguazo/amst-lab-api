@@ -2,7 +2,7 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 from apirest.models import Sensores,Lecturas
-from apirest.serializer import SensoresSerializer
+from apirest.serializer import SensoresSerializer,LecturasSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
  
@@ -62,7 +62,7 @@ def lectura_data_list(request):
     return JsonResponse(lectura_data_serializer.data, safe=False)
   elif request.method == 'POST':
     lectura_data = JSONParser().parse(request)
-    lectura_data_serializer = SensoresSerializer(data=lectura_data)
+    lectura_data_serializer = LecturasSerializer(data=lectura_data)
     if lectura_data_serializer.is_valid():
       lectura_data_serializer.save()
       return JsonResponse(lectura_data_serializer.data, 
@@ -81,7 +81,7 @@ def lectura_data_detail(request, pk):
             return JsonResponse(lectura_data_serializer.data) 
         elif request.method == 'PUT': 
             lectura_data = JSONParser().parse(request) 
-            lectura_data_serializer = SensoresSerializer(lectura_data, 
+            lectura_data_serializer = LecturasSerializer(lectura_data, 
                                                 data=lectura_data)
             if lectura_data_serializer.is_valid(): 
                 lectura_data_serializer.save() 
