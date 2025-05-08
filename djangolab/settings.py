@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import dj_database_url
 import os
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +27,16 @@ SECRET_KEY = 'django-insecure-ef&hf#%gcn4(ysfo+6s1c(jiv0q(scmyr#(!dk0apd*@u2r)bj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['amst-lab-api.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = [
+    'amst-lab-api.onrender.com',
+    '127.0.0.1',
+    '44.226.145.213',
+    '54.187.200.255',
+    '34.213.214.55',
+    '35.164.95.156',
+    '44.230.95.183',
+    '44.229.200.200',
+]
 
 REST_FRAMEWORK = {
 'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -89,18 +97,13 @@ WSGI_APPLICATION = 'djangolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dfe16b607a4pn3',
-        'USER': 'osqzvlmyayyfch',
-        'PASSWORD': '37e65d3399b8781aebf3f36a8acf2c12b4013d3e078134bbde55ffcf54530754',
-        'HOST': 'ec2-54-160-109-68.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -140,7 +143,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
 
 
 # Default primary key field type
